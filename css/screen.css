@@ -146,13 +146,10 @@ body {
   opacity: .1;
   fill: #000;
 }
-.c-robot__body{
-  animation-name: moveUpDown;
-  animation-duration: 1s;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  animation-play-state: var(--global-animation-state);
+.c-robot__body {
+  fill: var(--global-color-front);
+}
+/*.c-robot__body{
   fill: var(--global-color-front);
 }
 
@@ -187,7 +184,7 @@ body:has(input:checked) #Shadow {
   animation-direction: alternate;
   transform-origin: 50% 100%;
   animation-play-state: var(--global-animation-state);
-}
+}/*
 
 
 /*
