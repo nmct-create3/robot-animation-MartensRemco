@@ -8,13 +8,14 @@
 
 :root {
   /* Global colors */
-  --global-color-back: #6dbedf;
+  --global-color-back: #78287f;
   --global-color-front: white;
 
   /* global page settings */
   --global-html-color: var(--global-color-front);
   --global-html-backgroundColor: var(--global-color-back);
   --global-selection-backgroundColor: var(--global-color-front);
+  --global-animation-state: running;
 }
 
 /*------------------------------------*\
@@ -34,6 +35,7 @@ html {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--global-html-backgroundColor);
 }
 
 *,
@@ -43,6 +45,10 @@ html {
 }
 
 body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /*
@@ -133,9 +139,54 @@ body {
 */
 
 .c-robot {
+  max-width: 300px;
 }
 
 .c-robot__shadow {
+  opacity: .1;
+  fill: #000;
+}
+.c-robot__body{
+  animation-name: moveUpDown;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-play-state: var(--global-animation-state);
+  fill: var(--global-color-front);
+}
+
+body:has(input:checked) .c-robot__body{
+  --global-animation-state: paused;
+}
+body:has(input:checked) #Shadow {
+  --global-animation-state: paused;
+}
+
+@keyframes moveUpDown {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+@keyframes shadowPulse{
+  100%  {
+    transform: scale(0.75);
+  }
+}
+#Shadow{
+  animation-name: shadowPulse;
+  animation-duration: .5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  transform-origin: 50% 100%;
+  animation-play-state: var(--global-animation-state);
 }
 
 
